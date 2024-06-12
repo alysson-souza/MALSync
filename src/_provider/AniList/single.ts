@@ -159,6 +159,7 @@ export class Single extends SingleAbstract {
           repeat
           notes
         }
+        isAdult
       }
     }
     `;
@@ -207,8 +208,8 @@ export class Single extends SingleAbstract {
 
   async _sync() {
     let query = `
-      mutation ($mediaId: Int, $status: MediaListStatus, $progress: Int, $scoreRaw: Int, $notes: String) {
-        SaveMediaListEntry (mediaId: $mediaId, status: $status, progress: $progress, scoreRaw: $scoreRaw, notes: $notes) {
+      mutation ($mediaId: Int, $status: MediaListStatus, $progress: Int, $scoreRaw: Int, $notes: String, $private: Boolean) {
+        SaveMediaListEntry (mediaId: $mediaId, status: $status, progress: $progress, scoreRaw: $scoreRaw, notes: $notes, private: $private) {
           id
           status
           progress
@@ -222,12 +223,13 @@ export class Single extends SingleAbstract {
       scoreRaw: this.animeInfo.mediaListEntry.score,
       notes: this.animeInfo.mediaListEntry.notes,
       volumes: null,
+      private: this.animeInfo.isAdult,
     };
 
     if (this.type === 'manga') {
       query = `
-        mutation ($mediaId: Int, $status: MediaListStatus, $progress: Int, $scoreRaw: Int, $notes: String, $volumes: Int) {
-          SaveMediaListEntry (mediaId: $mediaId, status: $status, progress: $progress, scoreRaw: $scoreRaw, notes: $notes, progressVolumes: $volumes) {
+        mutation ($mediaId: Int, $status: MediaListStatus, $progress: Int, $scoreRaw: Int, $notes: String, $volumes: Int, $private: Boolean) {
+          SaveMediaListEntry (mediaId: $mediaId, status: $status, progress: $progress, scoreRaw: $scoreRaw, notes: $notes, progressVolumes: $volumes, private: $private) {
             id
             status
             progress
