@@ -133,6 +133,8 @@ import { Taiyo } from './Taiyo/main';
 import { AnimesOnline } from './AnimesOnline/main';
 import { Miruro } from './Miruro/main';
 import { Latanime } from './Latanime/main';
+import { MangaRead } from './MangaRead/main';
+import { Bakashi } from './Bakashi/main';
 
 export const pages = {
   nineAnime,
@@ -270,4 +272,6 @@ export const pages = {
   AnimesOnline,
   Miruro,
   Latanime,
+  MangaRead,
+  Bakashi,
 };

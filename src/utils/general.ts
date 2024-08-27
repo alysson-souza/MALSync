@@ -852,7 +852,7 @@ export function pageUrl(
     case 'anilist':
       return `https://anilist.co/${type}/${id}`;
     case 'kitsu':
-      return `https://kitsu.io/${type}/${id}`;
+      return `https://kitsu.app/${type}/${id}`;
     case 'simkl':
       return `https://simkl.com/${type}/${id}`;
     default:
@@ -889,17 +889,6 @@ export function waitForPageToBeVisible() {
   return awaitUi().then(() => {
     con.log('Page is visible');
   });
-}
-
-export function makeDomainCompatible(domain: string) {
-  // Add '/' to end of origin if it doesn't exist
-  if (domain.split('/').length < 4) {
-    domain += '/';
-  }
-
-  // Remove all after ?
-  domain = domain.replace(/\?.*/, '?');
-  return domain;
 }
 
 export async function clearCache() {
